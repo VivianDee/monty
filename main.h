@@ -1,9 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#define _POSIX_C_SOURCE 200809L
-
+#define LETTERS 1024
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -49,5 +49,6 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **head);
+size_t _getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif

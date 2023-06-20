@@ -34,18 +34,17 @@ int main(int argc, char *argv[])
 	while (read_chars > 0)
 	{
 		code = NULL;
-		read_chars = getline(&code, &len, fd);
-		if (code[read_chars - 1] == '\n')
-			code[read_chars - 1] = '\0';
+		read_chars = _getline(&code, &len, fd);
 		if (read_chars > 0 && code)
 		{
 			execute_code(&stack, code, line_num);
 		}
+		free(code);
 		line_num++;
 	}
 	fclose(fd);
 	if (code != NULL)
 		free(code);
 	free_stack(&stack);
-	exit (EXIT_SUCCESS);
+	return (0);
 }

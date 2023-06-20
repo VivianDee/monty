@@ -14,8 +14,8 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 	char *argument = NULL;
 	instruction_t instruction;
 
-	opcode = strtok(code, " ");
-	argument = strtok(NULL, " ");
+	opcode = strtok(code, " \t\n");
+	argument = strtok(NULL, " \t\n");
 	buffer.arg = argument;
 
 	if (opcode)
@@ -26,7 +26,9 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 			instruction.f = pall;
 		else
 		{
-			fprintf(stderr, "L%d: unknown instruction >> %s\n", line_num, opcode);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
+			free(code);
+			free_stack(stack);
 			exit(EXIT_FAILURE);
 		}
 
@@ -34,8 +36,8 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 	}
 	else
 	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
-		exit(EXIT_FAILURE);
+		free(code);
+		free_stack(stack);
+		exit(EXIT_SUCCESS);
 	}
-	free(code);
 }

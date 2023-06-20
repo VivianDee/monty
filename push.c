@@ -17,16 +17,12 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 
 	node->n = atoi(buffer.arg);
+	node->next = *stack;
 	node->prev = NULL;
 
 	if (*stack != NULL)
 	{
-		node->next = *stack;
 		(*stack)->prev = node;
-	}
-	else
-	{
-		node->next = NULL;
 	}
 	*stack = node;
 }
