@@ -45,9 +45,9 @@ typedef struct buffer
 
 extern buf_t buffer;
 
-void execute_code(stack_t *stack, char *code, unsigned int line_num);
+void execute_code(stack_t **stack, char *code, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t *head);
+void free_stack(stack_t **head);
 
 #endif

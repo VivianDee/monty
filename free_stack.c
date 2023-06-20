@@ -7,9 +7,9 @@
   *
   */
 
-void free_stack(stack_t *head)
+void free_stack(stack_t **head)
 {
-	stack_t *current = head;
+	stack_t *current = *head;
 	stack_t *node = NULL;
 
 	while (current != NULL)

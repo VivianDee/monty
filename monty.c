@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 	char *code = NULL;
 	size_t len = 0;
 	size_t read_chars = 1;
-	unsigned int line_num = 0;
-	stack_t stack = {0, NULL, NULL};
+	unsigned int line_num = 1;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -37,15 +37,15 @@ int main(int argc, char *argv[])
 		read_chars = getline(&code, &len, fd);
 		if (code[read_chars - 1] == '\n')
 			code[read_chars - 1] = '\0';
-		line_num++;
-		if (read_chars > 0)
+		if (read_chars > 0 && code)
 		{
 			execute_code(&stack, code, line_num);
 		}
+		line_num++;
 	}
 	fclose(fd);
 	if (code != NULL)
 		free(code);
 	free_stack(&stack);
-	return (EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }
