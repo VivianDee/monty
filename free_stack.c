@@ -2,7 +2,7 @@
 
 
 /**
-  * free_stack - A function that adds a node to the end a stack
+  * free_stack - A function that frees a stack
   * @head: A pointer to the given stack
   *
   */

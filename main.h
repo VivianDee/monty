@@ -42,6 +42,7 @@ typedef struct buffer
 {
 	char *arg;
 	FILE *file;
+	char *code;
 } buf_t;
 
 extern buf_t buffer;
@@ -52,5 +53,7 @@ void push(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **head);
 size_t _getline(char **lineptr, size_t *n, FILE *stream);
 int is_digit(const char *str);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
 
 #endif

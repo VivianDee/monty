@@ -1,21 +1,23 @@
-#include "monty.h"
+#include "main.h"
 
 /**
- * f_pint - function that prints the top
- * @head: the stack header
- * @counter: the line_number
- * Return: 0 on success
- */
+  * pint - A function prints the value at the top of the stack
+  * @stack: A pointer to the stack
+  * @line_number: The morty bytescode's line number
+  *
+  */
 
-void f_pint(stack_t **head, unsigned int counter)
+void pint(stack_t **stack, unsigned int line_number)
 {
-	if (*head == NULL)
+	stack_t *top = *stack;
+
+	if (top == NULL)
 	{
-		fprintf(stderr, "L%u: can't pint, stack empty\n", counter);
-		fclose(bus.file);
-		free(bus.content);
-		free_stack(*head);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free(*stack);
+		free(buffer.code);
+		fclose(buffer.file);
 		exit(EXIT_FAILURE);
 	}
-	printf("%d\n", (*head)->n);
+	printf("%d\n", top->n);
 }

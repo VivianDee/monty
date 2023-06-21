@@ -11,12 +11,10 @@
 void execute_code(stack_t **stack, char *code, unsigned int line_num)
 {
 	char *opcode = NULL;
-	char *argument = NULL;
 	instruction_t instruction;
 
 	opcode = strtok(code, " \t\n");
-	argument = strtok(NULL, " \t\n");
-	buffer.arg = argument;
+	buffer.arg = strtok(NULL, " \t\n");
 
 	if (opcode)
 	{
@@ -24,11 +22,14 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 			instruction.f = push;
 		else if (strcmp(opcode, "pall") == 0)
 			instruction.f = pall;
+		else if (strcmp(opcode, "pint") == 0)
+			instruction.f = pint;
+		else if (strcmp(opcode, "pop") == 0)
+			instruction.f = pop;
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
 			fclose(buffer.file);
-			free(buffer.file);
 			free(code);
 			free_stack(stack);
 			exit(EXIT_FAILURE);
@@ -46,7 +47,8 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
   * is_digit- A function that checks if a given string is a number
   * @str: A string
   *
-  */
+  * Return: 1 if str is a number
+ */
 
 int is_digit(const char *str)
 {

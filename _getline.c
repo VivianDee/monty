@@ -16,8 +16,7 @@ size_t _getline(char **lineptr, size_t *n, FILE *stream)
 	size_t total_chars = 0;
 	char *buff = NULL, *new_buff = NULL;
 
-	do
-	{
+	do {
 		buff = (char *)realloc(buff, (*n + BUFSIZ) * sizeof(char));
 		if (buff == NULL)
 		{
@@ -32,8 +31,7 @@ size_t _getline(char **lineptr, size_t *n, FILE *stream)
 			free(buff);
 			if (total_chars == 0)
 				return (-1);
-			else
-				break;
+			break;
 		}
 
 		read_chars = strlen(&buff[total_chars]);

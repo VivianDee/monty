@@ -1,6 +1,6 @@
 #include "main.h"
 
-buf_t buffer = {NULL, NULL};
+buf_t buffer = {NULL, NULL, NULL};
 
 /**
  * main - Entry point of the Monty program.
@@ -35,6 +35,7 @@ int main(int argc, char *argv[])
 	{
 		code = NULL;
 		read_chars = _getline(&code, &len, fd);
+		buffer.code = code;
 		if (read_chars > 0)
 			execute_code(&stack, code, line_num);
 		free(code);
