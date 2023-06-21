@@ -38,6 +38,15 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct buffer - opcode and its function
+ * @arg: opcode argent
+ * @file: A file pointee
+ * @code: opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
 typedef struct buffer
 {
 	char *arg;
@@ -55,5 +64,8 @@ size_t _getline(char **lineptr, size_t *n, FILE *stream);
 int is_digit(const char *str);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+
 
 #endif

@@ -26,6 +26,10 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 		instruction.f = pint;
 	else if (strcmp(opcode, "pop") == 0)
 		instruction.f = pop;
+	else if (strcmp(opcode, "swap") == 0)
+		instruction.f = swap;
+	else if (strcmp(opcode, "add") == 0)
+		instruction.f = add;
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
