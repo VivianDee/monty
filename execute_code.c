@@ -18,21 +18,21 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 
 	if (!opcode || opcode[0] == '#')
 		return;
-	if (strcmp(opcode, "push") == 0 && is_digit(buffer.arg))
-		instruction.f = push;
-	else if (strcmp(opcode, "pall") == 0)
-		instruction.f = pall;
-	else if (strcmp(opcode, "pint") == 0)
-		instruction.f = pint;
-	else if (strcmp(opcode, "pop") == 0)
-		instruction.f = pop;
-	else if (strcmp(opcode, "swap") == 0)
-		instruction.f = swap;
-	else if (strcmp(opcode, "nop") == 0)
+	instruction.f = (strcmp(opcode, "push") == 0 && is_digit(buffer.arg)) ? push :
+		(strcmp(opcode, "pall") == 0) ? pall :
+		(strcmp(opcode, "pint") == 0) ? pint :
+		(strcmp(opcode, "pop") == 0) ? pop :
+		(strcmp(opcode, "swap") == 0) ? swap :
+		(strcmp(opcode, "add") == 0) ? add :
+		(strcmp(opcode, "sub") == 0) ? sub :
+		(strcmp(opcode, "mul") == 0) ? mul :
+		(strcmp(opcode, "div") == 0) ? divi :
+		(strcmp(opcode, "mod") == 0) ? mod :
+		(strcmp(opcode, "pchar") == 0) ? pchar :
+		(strcmp(opcode, "pstr") == 0) ? pstr : NULL;
+	if (strcmp(opcode, "nop") == 0)
 		return;
-	else if (strcmp(opcode, "add") == 0)
-		instruction.f = add;
-	else
+	if (instruction.f == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
 		fclose(buffer.file);
