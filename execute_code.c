@@ -16,31 +16,26 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 	opcode = strtok(code, " \t\n");
 	buffer.arg = strtok(NULL, " \t\n");
 
-	if (opcode)
-	{
-		if (strcmp(opcode, "push") == 0 && is_digit(buffer.arg))
-			instruction.f = push;
-		else if (strcmp(opcode, "pall") == 0)
-			instruction.f = pall;
-		else if (strcmp(opcode, "pint") == 0)
-			instruction.f = pint;
-		else if (strcmp(opcode, "pop") == 0)
-			instruction.f = pop;
-		else
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
-			fclose(buffer.file);
-			free(code);
-			free_stack(stack);
-			exit(EXIT_FAILURE);
-		}
-
-		instruction.f(stack, line_num);
-	}
+	if (!opcode || opcode[0] == '#')
+		return;
+	if (strcmp(opcode, "push") == 0 && is_digit(buffer.arg))
+		instruction.f = push;
+	else if (strcmp(opcode, "pall") == 0)
+		instruction.f = pall;
+	else if (strcmp(opcode, "pint") == 0)
+		instruction.f = pint;
+	else if (strcmp(opcode, "pop") == 0)
+		instruction.f = pop;
 	else
 	{
-		return;
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
+		fclose(buffer.file);
+		free(code);
+		free_stack(stack);
+		exit(EXIT_FAILURE);
 	}
+
+	instruction.f(stack, line_num);
 }
 
 /**
