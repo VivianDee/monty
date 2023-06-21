@@ -28,6 +28,8 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 		instruction.f = pop;
 	else if (strcmp(opcode, "swap") == 0)
 		instruction.f = swap;
+	else if (strcmp(opcode, "nop") == 0)
+		return;
 	else if (strcmp(opcode, "add") == 0)
 		instruction.f = add;
 	else
