@@ -41,6 +41,7 @@ typedef struct instruction_s
 typedef struct buffer
 {
 	char *arg;
+	FILE *file;
 } buf_t;
 
 extern buf_t buffer;
@@ -50,5 +51,6 @@ void pall(stack_t **stack, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t **head);
 size_t _getline(char **lineptr, size_t *n, FILE *stream);
+int is_digit(const char *str);
 
 #endif

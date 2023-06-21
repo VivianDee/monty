@@ -1,6 +1,6 @@
 #include "main.h"
 
-buf_t buffer = {NULL};
+buf_t buffer = {NULL, NULL};
 
 /**
  * main - Entry point of the Monty program.
@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	FILE *fd;
 	char *code = NULL;
 	size_t len = 0;
-	size_t read_chars = 1;
+	int read_chars = 1;
 	unsigned int line_num = 1;
 	stack_t *stack = NULL;
 
@@ -30,15 +30,13 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
+	buffer.file = fd;
 	while (read_chars > 0)
 	{
 		code = NULL;
 		read_chars = _getline(&code, &len, fd);
-		if (read_chars > 0 && code)
-		{
+		if (read_chars > 0)
 			execute_code(&stack, code, line_num);
-		}
 		free(code);
 		line_num++;
 	}

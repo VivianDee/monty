@@ -20,13 +20,15 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 
 	if (opcode)
 	{
-		if (buffer.arg != NULL && atoi(buffer.arg) && strcmp(opcode, "push") == 0)
+		if (strcmp(opcode, "push") == 0 && is_digit(buffer.arg))
 			instruction.f = push;
-		else if (strstr(opcode, "pall") != NULL)
+		else if (strcmp(opcode, "pall") == 0)
 			instruction.f = pall;
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
+			fclose(buffer.file);
+			free(buffer.file);
 			free(code);
 			free_stack(stack);
 			exit(EXIT_FAILURE);
@@ -36,8 +38,33 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 	}
 	else
 	{
-		free(code);
-		free_stack(stack);
-		exit(EXIT_SUCCESS);
+		return;
 	}
+}
+
+/**
+  * is_digit- A function that checks if a given string is a number
+  * @str: A string
+  *
+  */
+
+int is_digit(const char *str)
+{
+	int number = 0;
+	int i = 0;
+
+	if (str[i] == '-' || str[i] == '+')
+	{
+		i++;
+	}
+
+	while (str[i])
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			number = (number * 10) + (str[i] - '0');
+		else
+			return (0);
+		i++;
+	}
+	return (1);
 }
