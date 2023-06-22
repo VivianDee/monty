@@ -53,7 +53,7 @@ typedef struct buffer
 	FILE *file;
 	char *code;
 	int queue;
-	stack_t *stack;
+	stack_t **stack;
 } buf_t;
 
 extern buf_t buffer;

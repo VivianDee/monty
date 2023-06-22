@@ -39,8 +39,7 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 	{
 		buffer.queue = (strcmp(opcode, "stack") == 0) ? 0 :
 			(strcmp(opcode, "queue") == 0) ? 1 : 0;
-		return;
-	}
+		return;	}
 	if (instruction.f == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
@@ -55,6 +54,7 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 /**
   * is_digit- A function that checks if a given string is a number
   * @str: A string
+  * @num: Line number
   *
   * Return: 1 if str is a number
  */
@@ -68,7 +68,7 @@ int is_digit(const char *str, int num)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", num);
 		fclose(buffer.file);
-		free(buffer.stack);
+		free_stack(buffer.stack);
 		free(buffer.code);
 		exit(EXIT_FAILURE);
 	}
@@ -85,7 +85,7 @@ int is_digit(const char *str, int num)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", num);
 		fclose(buffer.file);
-		free(buffer.stack);
+		free_stack(buffer.stack);
 		free(buffer.code);
 		exit(EXIT_FAILURE);
 		}

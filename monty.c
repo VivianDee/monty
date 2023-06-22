@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	buffer.file = fd;
-	buffer.stack = stack;
+	buffer.stack = &stack;
 	while (read_chars > 0)
 	{
 		code = NULL;
