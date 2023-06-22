@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
   * mod - A function does the mod of the two values at the top of the stack
   * @stack: A pointer to the stack

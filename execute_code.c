@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
   * execute_code - A function that executes the given opcode
   * @stack: A pointer to the stack

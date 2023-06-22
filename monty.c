@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 buf_t buffer = {NULL, NULL, NULL};
 
 /**

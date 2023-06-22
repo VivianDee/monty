@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
   * pint - A function prints the value at the top of the stack
   * @stack: A pointer to the stack

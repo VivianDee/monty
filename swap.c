@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
   * swap - A function swap the two values at the top of the stack
   * @stack: A pointer to the stack

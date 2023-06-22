@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 
 /**
   * free_stack - A function that frees a stack

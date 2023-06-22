@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
   * pstr - A function that prints a string from the stack
   * @stack: A pointer to the stack

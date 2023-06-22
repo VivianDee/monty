@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
   * pchar - A function prints the ascii  char of value at the top of the stack
   * @stack: A pointer to the stack

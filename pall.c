@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
   * pall - A function that prints a stack
   * @stack: A pointer to the given stack

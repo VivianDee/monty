@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 /**
   * push - A function that adds a node to the end a stack
   * @stack: A pointer to the given stack

@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
  *_getline - is the implementation of the POSIX getline function
  *used for reading user input and can adjust allocation and reallocation

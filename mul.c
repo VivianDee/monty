@@ -1,5 +1,4 @@
-#include "main.h"
-
+#include "monty.h"
 /**
   * mul - A function multiplies the two values at the top of the stack
   * @stack: A pointer to the stack
