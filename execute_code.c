@@ -14,7 +14,6 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 
 	opcode = strtok(code, " \t\n");
 	buffer.arg = strtok(NULL, " \t\n");
-
 	if (!opcode || opcode[0] == '#')
 		return;
 	instruction.f = (strcmp(opcode, "push") == 0 && is_digit(buffer.arg)) ? push :
@@ -33,6 +32,13 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 		(strcmp(opcode, "rotl") == 0) ? rotl : NULL;
 	if (strcmp(opcode, "nop") == 0)
 		return;
+
+	if (strcmp(opcode, "stack") == 0 || strcmp(opcode, "queue") == 0)
+	{
+		buffer.queue = (strcmp(opcode, "stack") == 0) ? 0 :
+			(strcmp(opcode, "queue") == 0) ? 1 : 0;
+		return;
+	}
 	if (instruction.f == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);

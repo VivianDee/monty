@@ -52,6 +52,7 @@ typedef struct buffer
 	char *arg;
 	FILE *file;
 	char *code;
+	int queue;
 } buf_t;
 
 extern buf_t buffer;
@@ -74,4 +75,6 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack);
+
 #endif

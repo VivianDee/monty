@@ -1,5 +1,5 @@
 #include "monty.h"
-buf_t buffer = {NULL, NULL, NULL};
+buf_t buffer = {NULL, NULL, NULL, 0};
 
 /**
  * main - Entry point of the Monty program.
