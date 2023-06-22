@@ -18,7 +18,8 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 		return;
 	if (!opcode || opcode[0] == '#')
 		return;
-	instruction.f = (strcmp(opcode, "push") == 0 && is_digit(buffer.arg)) ? push :
+	instruction.f =
+		(strcmp(opcode, "push") == 0 && is_digit(buffer.arg, line_num)) ? push :
 		(strcmp(opcode, "pall") == 0) ? pall :
 		(strcmp(opcode, "pint") == 0) ? pint :
 		(strcmp(opcode, "pop") == 0) ? pop :
@@ -58,11 +59,19 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
   * Return: 1 if str is a number
  */
 
-int is_digit(const char *str)
+int is_digit(const char *str, int num)
 {
 	int number = 0;
 	int i = 0;
 
+	if (!str)
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", num);
+		fclose(buffer.file);
+		free(buffer.stack);
+		free(buffer.code);
+		exit(EXIT_FAILURE);
+	}
 	if (str[i] == '-' || str[i] == '+')
 	{
 		i++;
@@ -73,7 +82,13 @@ int is_digit(const char *str)
 		if (str[i] >= '0' && str[i] <= '9')
 			number = (number * 10) + (str[i] - '0');
 		else
-			return (0);
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", num);
+		fclose(buffer.file);
+		free(buffer.stack);
+		free(buffer.code);
+		exit(EXIT_FAILURE);
+		}
 		i++;
 	}
 	return (1);

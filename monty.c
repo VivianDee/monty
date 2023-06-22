@@ -1,5 +1,5 @@
 #include "monty.h"
-buf_t buffer = {NULL, NULL, NULL, 0};
+buf_t buffer = {NULL, NULL, NULL, 0, NULL};
 
 /**
  * main - Entry point of the Monty program.
@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	buffer.file = fd;
+	buffer.stack = stack;
 	while (read_chars > 0)
 	{
 		code = NULL;
