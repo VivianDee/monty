@@ -22,7 +22,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		free(buffer.code);
 		fclose(buffer.file);
-		free(*stack);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	temp = (*stack)->next;

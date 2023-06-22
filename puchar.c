@@ -15,7 +15,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		free(buffer.code);
 		fclose(buffer.file);
-		free(*stack);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	if (top->n < 128 && top->n >= 0)
@@ -26,7 +26,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	else
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		free(*stack);
+		free_stack(stack);
 		free(buffer.code);
 		fclose(buffer.file);
 		exit(EXIT_FAILURE);

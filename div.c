@@ -22,7 +22,7 @@ void divi(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		free(buffer.code);
 		fclose(buffer.file);
-		free(*stack);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	temp = (*stack)->next;
@@ -32,7 +32,7 @@ void divi(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free(buffer.code);
 		fclose(buffer.file);
-		free(*stack);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	num = (temp->n) / (top->n);

@@ -14,6 +14,9 @@ void queue(stack_t **stack)
 	if (node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
+		free_stack(stack);
+		free(buffer.code);
+		fclose(buffer.file);
 		exit(EXIT_FAILURE);
 	}
 
