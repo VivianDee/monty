@@ -12,6 +12,8 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 	char *opcode = NULL;
 	instruction_t instruction;
 
+	if (opcode == NULL)
+		return;
 	opcode = strtok(code, " \t\n");
 	buffer.arg = strtok(NULL, " \t\n");
 	if (!opcode || opcode[0] == '#')
@@ -32,7 +34,6 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 		(strcmp(opcode, "rotl") == 0) ? rotl : NULL;
 	if (strcmp(opcode, "nop") == 0)
 		return;
-
 	if (strcmp(opcode, "stack") == 0 || strcmp(opcode, "queue") == 0)
 	{
 		buffer.queue = (strcmp(opcode, "stack") == 0) ? 0 :
@@ -47,7 +48,6 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
-
 	instruction.f(stack, line_num);
 }
 
