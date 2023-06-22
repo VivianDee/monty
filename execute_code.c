@@ -28,7 +28,9 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 		(strcmp(opcode, "div") == 0) ? divi :
 		(strcmp(opcode, "mod") == 0) ? mod :
 		(strcmp(opcode, "pchar") == 0) ? pchar :
-		(strcmp(opcode, "pstr") == 0) ? pstr : NULL;
+		(strcmp(opcode, "pstr") == 0) ? pstr :
+		(strcmp(opcode, "rotr") == 0) ? rotr :
+		(strcmp(opcode, "rotl") == 0) ? rotl : NULL;
 	if (strcmp(opcode, "nop") == 0)
 		return;
 	if (instruction.f == NULL)
