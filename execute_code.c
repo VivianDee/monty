@@ -12,8 +12,6 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 	char *opcode = NULL;
 	instruction_t instruction;
 
-	if (opcode == NULL)
-		return;
 	opcode = strtok(code, " \t\n");
 	buffer.arg = strtok(NULL, " \t\n");
 	if (!opcode || opcode[0] == '#')
