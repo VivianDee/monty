@@ -14,6 +14,8 @@ void execute_code(stack_t **stack, char *code, unsigned int line_num)
 
 	opcode = strtok(code, " \t\n");
 	buffer.arg = strtok(NULL, " \t\n");
+	if (opcode == NULL)
+		return;
 	if (!opcode || opcode[0] == '#')
 		return;
 	instruction.f = (strcmp(opcode, "push") == 0 && is_digit(buffer.arg)) ? push :
